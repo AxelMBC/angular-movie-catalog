@@ -1,0 +1,10 @@
+<!-- el bloque solo se renderizará si la variable movie tiene un valor. -->
+<main *ngIf="movie" class="movie-details">
+  <!--  llama a la función goBack() que está definida en el archivo TypeScript del componente movie-detail.component.ts. -->
+  <button (click)="goBack()">Back to Movie List</button>
+
+  <h1>{{ movie.title }}</h1>
+  <img [src]="movie.cover" alt="{{ movie.title }}" />
+  <p><strong>Year:</strong> {{ movie.year }}</p>
+  <p><strong>Synopsis:</strong> {{ movie.synopsis }}</p>
+</main>

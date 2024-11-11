@@ -1,0 +1,54 @@
+<style>
+  h1 {
+    font-weight: 700;
+  }
+</style>
+<main class="movies-list container-fluid px-0">
+  <app-header></app-header>
+  <h1 class="pt-4 pb-2 text-center">{{ title }}</h1>
+  <div class="row justify-content-center m-0 pb-4">
+    <div class="col-11">
+      <p>
+        Nuestro catálogo de películas presenta una selección curada de las
+        mejores películas según críticos y audiencias de las plataformas más
+        reconocidas, como IMDb y Rotten Tomatoes. Aquí encontrarás tanto éxitos
+        taquilleros como clásicos aclamados, con una mezcla de géneros que
+        incluyen drama, acción, comedia y ciencia ficción. Cada película ha sido
+        cuidadosamente elegida por su alto puntaje en reseñas de críticos y
+        usuarios, destacándose no solo por su calidad cinematográfica, sino
+        también por su impacto cultural. Este listado es ideal para cinéfilos
+        que buscan lo mejor del cine, respaldado por las opiniones más
+        confiables en el mundo del entretenimiento.
+      </p>
+    </div>
+  </div>
+
+  <ul class="row justify-content-center list-unstyled m-0">
+    <li *ngFor="let movie of movies" class="col-10 movie-card mb-4">
+      <div class="movie-link container-fluid align-items-center p-3">
+        <div class="row">
+          <a
+            [routerLink]="['/movie', movie.id]"
+            class="col-8 text-decoration-none"
+          >
+            <h3 class="movie-title me-2">{{ movie.title }}</h3>
+            <p class="movie-year text-muted">{{ movie.year }}</p>
+          </a>
+          <div class="col-4">
+            <div
+              class="container-fluid row justify-content-end align-items-center"
+            >
+              <div class="col-auto">
+                <button (click)="deleteMovie(movie.id)" class="btn btn-danger">
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <app-footer></app-footer>
+</main>
