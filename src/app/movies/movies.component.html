@@ -22,6 +22,41 @@
       </p>
     </div>
   </div>
+  <div class="container-fluid row justify-content-end align-items-center">
+    <div class="col-auto py-4">
+      <button class="btn btn-primary" (click)="openModal()">
+        + Agregar Pelicula
+      </button>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="movieModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Modal title</h1>
+          <button
+            type="button"
+            class="btn-close"
+            (click)="closeModal()"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">...</div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeModal()"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <ul class="row justify-content-center list-unstyled m-0">
     <li *ngFor="let movie of movies" class="col-10 movie-card mb-4">

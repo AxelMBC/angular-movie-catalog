@@ -35,7 +35,7 @@ export class MoviesComponent implements OnInit {
       // Next se activa cuando el observable emite nuevos datos
       next: (data) => {
         this.movies = data;
-        console.log('Movies fetched:', this.movies);
+        // console.log('Movies fetched:', this.movies);
       },
       error: (err) => {
         console.error('Error fetching movies:', err);
@@ -54,5 +54,21 @@ export class MoviesComponent implements OnInit {
         console.error(`Error deleting movie with ID ${id}:`, err);
       },
     });
+  }
+
+  openModal() {
+    console.log('OpenModal Function Ran');
+    const modalDiv = document.getElementById('movieModal');
+    console.log('OpenModal Function Ran: ', modalDiv);
+    if (modalDiv != null) {
+      modalDiv.style.display = 'block';
+    }
+  }
+
+  closeModal() {
+    const modelDiv = document.getElementById('movieModal');
+    if (modelDiv != null) {
+      modelDiv.style.display = 'none';
+    }
   }
 }
