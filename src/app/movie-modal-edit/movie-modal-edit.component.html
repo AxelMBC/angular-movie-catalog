@@ -1,0 +1,75 @@
+<!-- Modal -->
+<div class="modal" id="editMovieModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Editar Película</h1>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="closeModal()"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" #editForm="ngForm">
+          <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              [(ngModel)]="movieToEdit.title"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="synopsis" class="form-label">Sinopsis</label>
+            <textarea
+              class="form-control"
+              id="synopsis"
+              name="synopsis"
+              rows="3"
+              [(ngModel)]="movieToEdit.synopsis"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="year" class="form-label">Año</label>
+            <input
+              type="number"
+              class="form-control"
+              id="year"
+              name="year"
+              [(ngModel)]="movieToEdit.year"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="cover" class="form-label">Portada</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cover"
+              name="cover"
+              [(ngModel)]="movieToEdit.cover"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+          Guardar Cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
