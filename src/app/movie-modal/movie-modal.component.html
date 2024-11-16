@@ -1,0 +1,85 @@
+<!-- modal kit -->
+<div class="container-fluid row justify-content-end align-items-center">
+  <div class="col-auto py-4">
+    <button class="btn btn-primary" (click)="openModal()">
+      + Agregar Pelicula
+    </button>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="movieModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="closeModal()"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" #formMovie="ngForm">
+          <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              [(ngModel)]="newMovie.title"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="synopsis" class="form-label">Sinopsis</label>
+            <textarea
+              class="form-control"
+              id="synopsis"
+              name="synopsis"
+              rows="3"
+              [(ngModel)]="newMovie.synopsis"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="year" class="form-label">Año</label>
+            <input
+              type="number"
+              class="form-control"
+              id="year"
+              name="year"
+              [(ngModel)]="newMovie.year"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="cover" class="form-label">Portada</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cover"
+              name="cover"
+              [(ngModel)]="newMovie.cover"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

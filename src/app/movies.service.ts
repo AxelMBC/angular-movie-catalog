@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core'; // Declara que este servicio puede s
 import { HttpClient } from '@angular/common/http'; // Importa HttpClient para hacer solicitudes HTTP
 import { Observable } from 'rxjs'; // Importa Observable para manejar datos asincrónicos
 
+interface Movie {
+  id?: number;
+  title: string;
+  synopsis: string;
+  year: number;
+  cover: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -27,5 +35,9 @@ export class MoviesService {
 
   updateMovie(id: number, updatedData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}${id}`, updatedData);
+  }
+
+  createMovie(movie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(this.apiUrl, movie);
   }
 }
