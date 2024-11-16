@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'; // Importa HttpClient para ha
 import { Observable } from 'rxjs'; // Importa Observable para manejar datos asincrónicos
 
 interface Movie {
-  id?: number;
+  id: number;
   title: string;
   synopsis: string;
   year: number;

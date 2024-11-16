@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MoviesService } from '../movies.service';
 
 interface Movie {
-  id?: number;
+  id: number;
   title: string;
   synopsis: string;
   year: number;
@@ -22,6 +22,7 @@ export class ModalComponent {
   @Output() movieCreated = new EventEmitter<Movie>();
 
   newMovie: Movie = {
+    id: 0,
     title: '',
     synopsis: '',
     year: new Date().getFullYear(),
@@ -44,6 +45,7 @@ export class ModalComponent {
     }
     // Reset form
     this.newMovie = {
+      id: 0,
       title: '',
       synopsis: '',
       year: new Date().getFullYear(),

@@ -50,7 +50,7 @@ export class MoviesComponent implements OnInit {
 
   onMovieCreated(newMovie: Movie) {
     // Add the new movie to the beginning of the array to show it first
-    this.movies.unshift(newMovie);
+    this.movies.push(newMovie);
   }
 
   deleteMovie(id: number) {
@@ -63,19 +63,5 @@ export class MoviesComponent implements OnInit {
         console.error(`Error deleting movie with ID ${id}:`, err);
       },
     });
-  }
-
-  openModal() {
-    const modalDiv = document.getElementById('movieModal');
-    if (modalDiv != null) {
-      modalDiv.style.display = 'block';
-    }
-  }
-
-  closeModal() {
-    const modelDiv = document.getElementById('movieModal');
-    if (modelDiv != null) {
-      modelDiv.style.display = 'none';
-    }
   }
 }
