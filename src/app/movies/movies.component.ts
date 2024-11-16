@@ -5,6 +5,7 @@ import { MoviesService } from '../movies.service';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ModalComponent } from '../movie-modal/movie-modal.component';
+import { MovieModalEditComponent } from '../movie-modal-edit/movie-modal-edit.component';
 
 interface Movie {
   id: number;
@@ -21,6 +22,7 @@ interface Movie {
     CommonModule,
     RouterModule,
     ModalComponent,
+    MovieModalEditComponent,
     HeaderComponent,
     FooterComponent,
   ],
@@ -30,6 +32,7 @@ interface Movie {
 export class MoviesComponent implements OnInit {
   title = 'Mejores Peliculas';
   movies: Movie[] = [];
+  selectedMovie: Movie | null = null;
 
   constructor(private moviesService: MoviesService) {}
 
@@ -63,5 +66,22 @@ export class MoviesComponent implements OnInit {
         console.error(`Error deleting movie with ID ${id}:`, err);
       },
     });
+  }
+
+  openModal(movie: Movie) {
+    this.selectedMovie = movie;
+    const modalDiv = document.getElementById('editMovieModal');
+    console.log('Modal.div: ', modalDiv);
+    if (modalDiv != null) {
+      modalDiv.style.display = 'block'; // Mostrar Modal
+    }
+  }
+
+  closeModal() {
+    this.selectedMovie = null; // Clear the selected movie
+    const modalDiv = document.getElementById('editMovieModal');
+    if (modalDiv != null) {
+      modalDiv.style.display = 'none'; // Mostrar Modal
+    }
   }
 }
