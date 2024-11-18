@@ -40,6 +40,7 @@ export class MoviesComponent implements OnInit {
     this.fetchMovies();
   }
 
+  // Llamar a lista de peliculas
   fetchMovies() {
     this.moviesService.getMovies().subscribe({
       next: (data) => {
@@ -52,10 +53,10 @@ export class MoviesComponent implements OnInit {
   }
 
   onMovieCreated(newMovie: Movie) {
-    // Add the new movie to the beginning of the array to show it first
     this.movies.push(newMovie);
   }
 
+  //Funcion Borrar pelicula
   deleteMovie(id: number) {
     this.moviesService.deleteMovie(id).subscribe({
       next: () => {
@@ -68,20 +69,22 @@ export class MoviesComponent implements OnInit {
     });
   }
 
+  // Abrir modal
   openModal(movie: Movie) {
     this.selectedMovie = movie;
     const modalDiv = document.getElementById('editMovieModal');
     console.log('Modal.div: ', modalDiv);
     if (modalDiv != null) {
-      modalDiv.style.display = 'block'; // Mostrar Modal
+      modalDiv.style.display = 'block';
     }
   }
 
+  // Cerrar modal
   closeModal() {
-    this.selectedMovie = null; // Clear the selected movie
+    this.selectedMovie = null;
     const modalDiv = document.getElementById('editMovieModal');
     if (modalDiv != null) {
-      modalDiv.style.display = 'none'; // Mostrar Modal
+      modalDiv.style.display = 'none';
     }
   }
 }

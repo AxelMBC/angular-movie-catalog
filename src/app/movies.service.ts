@@ -33,10 +33,12 @@ export class MoviesService {
     return this.http.delete(`${this.apiUrl}${id}`);
   }
 
+  //Actualizar Pelicula
   updateMovie(id: number, updatedData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}${id}`, updatedData);
   }
 
+  // Crear pelicula
   createMovie(movie: Movie): Observable<Movie> {
     return this.http.post<Movie>(this.apiUrl, movie);
   }

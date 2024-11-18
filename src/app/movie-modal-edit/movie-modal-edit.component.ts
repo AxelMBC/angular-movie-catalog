@@ -1,4 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MoviesService } from '../movies.service';
@@ -18,23 +24,29 @@ interface Movie {
   templateUrl: './movie-modal-edit.component.html',
   styleUrls: ['./movie-modal-edit.component.scss'],
 })
-export class MovieModalEditComponent {
+export class MovieModalEditComponent implements AfterViewInit {
   @Input() movieToEdit!: Movie;
+  @Output() close = new EventEmitter<void>();
 
   constructor(private moviesService: MoviesService) {}
 
+  ngAfterViewInit() {
+    this.openModal();
+  }
+
   openModal() {
     const modalDiv = document.getElementById('editMovieModal');
-    if (modalDiv != null) {
+    if (modalDiv) {
       modalDiv.style.display = 'block';
     }
   }
 
   closeModal() {
     const modalDiv = document.getElementById('editMovieModal');
-    if (modalDiv != null) {
+    if (modalDiv) {
       modalDiv.style.display = 'none';
     }
+    this.close.emit();
   }
 
   onSubmit() {
